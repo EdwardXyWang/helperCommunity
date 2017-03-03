@@ -45,5 +45,26 @@
           <%= @event.user.created_at.strftime("%d %b. %Y") %>
         </p>
       </div>
+
+      <% if current_user && @event.user != current_user %>
+
+      <% if !@event.users.include?(current_user) %>
+        <%= form_for(@event, url: :accept_event, method: :post) do |form| %>
+          <button type="submit">Accept</button>
+        <% end %>
+      <% else %>
+        <p> <%= current_user.name %>, you are now registered for <%= @event.user.name %>'s event. </p>
+        <p> <%= @event.user.name %>'s contact info: <%= @event.user.email %> </p>
+      <% end %>
+
+      <%end%>
+
+
+      <p>
+        Attendees:
+        <% @event.users.each do |x| %>
+          <%= link_to x.name, user_path(x.id) %>
+        <%end%>
+      </p>
     </section>
   </article>

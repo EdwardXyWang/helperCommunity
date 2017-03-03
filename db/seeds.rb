@@ -32,8 +32,8 @@ u1 = User.create!({
   password_digest: '1111',
   photo: open_asset('Obama.jpg'),
   description: Faker::Hipster.paragraph(4),
-  DoB: 1911-11-11,
-  phone_number: 111-111-1111
+  DoB: 50.years.from_now,
+  phone_number: '+11111111111'
 })
 
 u2 = User.create!({
@@ -42,8 +42,8 @@ u2 = User.create!({
   password_digest: '2222',
   photo: open_asset('beyonce.jpg'),
   description: Faker::Hipster.paragraph(4),
-  DoB: 1922-22-22,
-  phone_number: 222-222-2222
+  DoB: 50.years.from_now,
+  phone_number: '+12222222222'
 })
 
 u3 = User.create!({
@@ -52,8 +52,8 @@ u3 = User.create!({
   password_digest: '3333',
   photo: open_asset('peter.jpg'),
   description: Faker::Hipster.paragraph(4),
-  DoB: 1933-33-33,
-  phone_number: 333-333-3333
+  DoB: 50.years.from_now,
+  phone_number: '+13333333333'
 })
 
 puts "DONE!"
@@ -73,7 +73,7 @@ e1 = u1.events.create!({
   scheduled_at: 10.days.from_now
 })
 
-e2 = u1.events.create!({
+e2 = u2.events.create!({
   title: 'Buy a speaker',
   lat: 49.284557,
   lng: -123.10831,
@@ -82,7 +82,7 @@ e2 = u1.events.create!({
   scheduled_at: 15.days.from_now
 })
 
-e3 = u1.events.create!({
+e3 = u3.events.create!({
   title: 'Invest another Facebook',
   lat: 49.28,
   lng: -123,

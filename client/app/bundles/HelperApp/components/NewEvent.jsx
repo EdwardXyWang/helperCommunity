@@ -57,7 +57,6 @@ export default class NewEvent extends React.Component {
                   <input name='event[scheduled_at]' type="datetime-local" className='input' />
                 </p>
               </div>
-
               <div className="form-group">
                 <label className="label required">Address:</label>
                 <p className="control">

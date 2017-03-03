@@ -1,6 +1,6 @@
 <% if current_user && current_user.id != @user.id %>
   <section class="review-form">
-      <h2>Add a comment:</h2>
+      <h2>Add Review for this Member:</h2>
       <%= form_for([@user, @review]) do |f| %>
         <p>
           <%= f.label :content %><br>
