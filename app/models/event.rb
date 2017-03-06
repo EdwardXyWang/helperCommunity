@@ -16,7 +16,7 @@ class Event < ApplicationRecord
 
   before_save :geocode_endpoints
 
-  # after_validation :geocode
+  after_validation :geocode
   has_and_belongs_to_many :users
 
   has_attached_file :photo, :styles => { :medium =>     "300x300#", :thumb => "200x200#" }

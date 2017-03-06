@@ -60,6 +60,9 @@
   </div>
 </nav>
 
+<!-- The following tag is a invisible tag which enable us to access data in front end /javascripts/channels/rooms.js. Also, RoomIdArray is a helper from /helpers/application_helper.rb -->
+<%= content_tag :div, class: "all_subscribed_rooms_id", data: {id: RoomIdArray(@rooms, current_user)} do %>
+<% end %>
 <!-- Signup modal -->
 <div id="modal-ter" class="modal">
   <div class="modal-background"></div>

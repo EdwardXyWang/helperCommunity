@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'hello_world', to: 'hello_world#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'events#index'
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy]
   end
 
+  resources :rooms, only: [:index, :show, :create]
+
   resource  :verifications
 
   get '/login' => 'sessions#new'
@@ -19,5 +22,9 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+
+  mount ActionCable.server => '/cable'
+
   post '/events/:id/accept' => 'events#accept_event', as: :accept_event
+
 end

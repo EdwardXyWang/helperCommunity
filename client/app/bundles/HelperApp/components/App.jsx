@@ -9,14 +9,28 @@ export default class App extends React.Component {
     this.createEvent = this.createEvent.bind(this);
   }
 
+  registerRoom (roomInfo) {
+    $.ajax({
+      url: '/rooms',
+      type: 'POST',
+      data: {room: roomInfo},
+      error: () => {
+        alert("Room is failed to create!");
+      }
+    });
+  }
+
   createEvent(eventData) {
     $.ajax({
       url: '/events',
       type: 'POST',
       data: {event: eventData},
       success: (response) => {
-        // alert("Event Successfully created");
-        console.log(response);
+        const roomInfo = {
+          title: response.title,
+          event_id: response.id
+        };
+        this.registerRoom(roomInfo);
       },
       error: (response)=>{
         // alert("Error creating an event");

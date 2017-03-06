@@ -62,6 +62,5 @@ class EventsController < ApplicationController
         :end_address,
         :city
       )
-
     end
 end

@@ -1,0 +1,19 @@
+<h1> Dear <%= current_user.name %>, you sent out the following help requests. Feel free to chat with people who would like to chat with you! </h1>
+
+<% @events.each do |e| %>
+  <% if current_user.id == e.user.id %>
+    <%= link_to room_path(@rooms.find_by(event_id: e.id).id) do %>
+      You have requested help: <%= e.title %>.
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1> Also, thank you for your contribution, you helped the following events! </h1>
+
+<% @help_lists.each do |h| %>
+  <% if current_user.id == h.user.id %>
+   <%= link_to(room_path(@rooms.find_by(event_id: h.event_id).id)) do %>
+      You have helped: <%= @events.find(h.event_id).title %>.
+    <% end %>
+  <% end %>
+<% end %>

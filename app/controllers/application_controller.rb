@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :set_variables
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
@@ -16,6 +18,12 @@ class ApplicationController < ActionController::Base
 
   def show
     @event = Event.find(params[:id])
+  end
+
+  protected
+
+  def set_variables
+    @rooms = Room.all
   end
 
 end
